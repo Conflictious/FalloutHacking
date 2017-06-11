@@ -6,7 +6,10 @@ def FVin():
 def pickword(words, pickedword, pickedfam):
     possiblewords = []
     for word in words:
-        matching = [letter for letter in pickedword if letter in word]
+        matching = [iletter
+                    for j, iletter in enumerate(pickedword)
+                    for i, oletter in enumerate(word)
+                    if i == j and oletter == iletter]
         if len(matching) == pickedfam:
             possiblewords.append(word)
     return possiblewords
